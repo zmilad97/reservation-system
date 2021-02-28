@@ -2,25 +2,31 @@ package com.github.zmilad97.reservationsystem.starter;
 
 import com.github.zmilad97.reservationsystem.module.User;
 import com.github.zmilad97.reservationsystem.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class systemStarter implements ApplicationRunner {
+public class SystemStarter implements ApplicationRunner {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private static final Logger LOG = LoggerFactory.getLogger(SystemStarter.class);
 
-    public systemStarter(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public SystemStarter(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        if (userRepository.findUserById(1) == null)
+        if (userRepository.findUserById(1) == null){
             userRepository.save(adminUser());
+            LOG.info("admin user created");
+        }
+
     }
 
 
