@@ -1,13 +1,12 @@
 package com.github.zmilad97.reservationsystem.Service;
 
-import com.github.zmilad97.reservationsystem.module.Schedule;
-import com.github.zmilad97.reservationsystem.module.Work;
+import com.github.zmilad97.reservationsystem.model.Schedule;
+import com.github.zmilad97.reservationsystem.model.Work;
 import com.github.zmilad97.reservationsystem.repository.ScheduleRepository;
 import com.github.zmilad97.reservationsystem.repository.WorkRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

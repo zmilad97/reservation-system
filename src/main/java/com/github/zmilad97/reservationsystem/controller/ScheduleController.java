@@ -1,7 +1,7 @@
 package com.github.zmilad97.reservationsystem.controller;
 
 import com.github.zmilad97.reservationsystem.Service.ScheduleService;
-import com.github.zmilad97.reservationsystem.module.Schedule;
+import com.github.zmilad97.reservationsystem.model.Schedule;
 import com.github.zmilad97.reservationsystem.repository.ScheduleRepository;
 import org.springframework.web.bind.annotation.*;
 

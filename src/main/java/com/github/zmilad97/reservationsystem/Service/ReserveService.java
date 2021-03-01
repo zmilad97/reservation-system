@@ -1,8 +1,8 @@
 package com.github.zmilad97.reservationsystem.Service;
 
-import com.github.zmilad97.reservationsystem.module.Reserve;
-import com.github.zmilad97.reservationsystem.module.User;
-import com.github.zmilad97.reservationsystem.module.Work;
+import com.github.zmilad97.reservationsystem.model.Reserve;
+import com.github.zmilad97.reservationsystem.model.User;
+import com.github.zmilad97.reservationsystem.model.Work;
 import com.github.zmilad97.reservationsystem.repository.ReserveRepository;
 import com.github.zmilad97.reservationsystem.repository.WorkRepository;
 import com.github.zmilad97.reservationsystem.security.SecurityUtil;

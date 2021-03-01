@@ -1,9 +1,8 @@
-package com.github.zmilad97.reservationsystem.module;
+package com.github.zmilad97.reservationsystem.model;
 
 import javax.persistence.*;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.time.format.TextStyle;
 import java.util.*;
 
 

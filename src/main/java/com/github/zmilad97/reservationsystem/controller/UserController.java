@@ -1,7 +1,7 @@
 package com.github.zmilad97.reservationsystem.controller;
 
 import com.github.zmilad97.reservationsystem.Service.UserService;
-import com.github.zmilad97.reservationsystem.module.User;
+import com.github.zmilad97.reservationsystem.model.User;
 import com.github.zmilad97.reservationsystem.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

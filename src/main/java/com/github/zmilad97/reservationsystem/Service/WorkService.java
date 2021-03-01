@@ -1,15 +1,13 @@
 package com.github.zmilad97.reservationsystem.Service;
 
-import com.github.zmilad97.reservationsystem.module.Schedule;
-import com.github.zmilad97.reservationsystem.module.Work;
+import com.github.zmilad97.reservationsystem.model.Schedule;
+import com.github.zmilad97.reservationsystem.model.Work;
 import com.github.zmilad97.reservationsystem.repository.WorkRepository;
 import com.github.zmilad97.reservationsystem.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 
 @Service
 public class WorkService {

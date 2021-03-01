@@ -1,7 +1,7 @@
 package com.github.zmilad97.reservationsystem.controller;
 
 import com.github.zmilad97.reservationsystem.Service.ReserveService;
-import com.github.zmilad97.reservationsystem.module.Reserve;
+import com.github.zmilad97.reservationsystem.model.Reserve;
 import com.github.zmilad97.reservationsystem.repository.ReserveRepository;
 import com.github.zmilad97.reservationsystem.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;

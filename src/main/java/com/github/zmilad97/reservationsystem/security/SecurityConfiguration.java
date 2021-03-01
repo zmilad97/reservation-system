@@ -35,6 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return daoAuthenticationProvider;
     }
 
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
@@ -54,6 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/work/**").hasAnyRole("ROLE_ADMIN", "ROLE_OWNER")
                 .antMatchers("/api/schedule/**").hasAnyRole("ROLE_ADMIN", "ROLE_OWNER")
                 .antMatchers("/api/reserve/work/**").hasAnyRole("ROLE_ADMIN", "ROLE_OWNER")
+                .antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout().invalidateHttpSession(true)

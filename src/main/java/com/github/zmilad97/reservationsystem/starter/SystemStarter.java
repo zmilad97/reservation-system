@@ -1,6 +1,6 @@
 package com.github.zmilad97.reservationsystem.starter;
 
-import com.github.zmilad97.reservationsystem.module.User;
+import com.github.zmilad97.reservationsystem.model.User;
 import com.github.zmilad97.reservationsystem.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ public class SystemStarter implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        if (userRepository.findUserById(1) == null){
+        if (userRepository.findByPhonenumber(Long.parseLong("09389717356")) == null){
             userRepository.save(adminUser());
             LOG.info("admin user created");
         }

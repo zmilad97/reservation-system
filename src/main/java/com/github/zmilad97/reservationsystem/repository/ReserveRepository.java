@@ -1,8 +1,8 @@
 package com.github.zmilad97.reservationsystem.repository;
 
-import com.github.zmilad97.reservationsystem.module.Reserve;
-import com.github.zmilad97.reservationsystem.module.User;
-import com.github.zmilad97.reservationsystem.module.Work;
+import com.github.zmilad97.reservationsystem.model.Reserve;
+import com.github.zmilad97.reservationsystem.model.User;
+import com.github.zmilad97.reservationsystem.model.Work;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

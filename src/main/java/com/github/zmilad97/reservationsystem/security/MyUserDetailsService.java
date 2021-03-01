@@ -1,6 +1,6 @@
 package com.github.zmilad97.reservationsystem.security;
 
-import com.github.zmilad97.reservationsystem.module.User;
+import com.github.zmilad97.reservationsystem.model.User;
 import com.github.zmilad97.reservationsystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

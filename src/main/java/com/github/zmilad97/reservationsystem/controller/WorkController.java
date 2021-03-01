@@ -1,13 +1,11 @@
 package com.github.zmilad97.reservationsystem.controller;
 
 import com.github.zmilad97.reservationsystem.Service.WorkService;
-import com.github.zmilad97.reservationsystem.module.Schedule;
-import com.github.zmilad97.reservationsystem.module.Work;
+import com.github.zmilad97.reservationsystem.model.Schedule;
+import com.github.zmilad97.reservationsystem.model.Work;
 import com.github.zmilad97.reservationsystem.repository.WorkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/work/")
