@@ -19,7 +19,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User user = userRepository.findByPhonenumber(Long.parseLong(s));
+        User user = userRepository.findByPhonenumber(s);
         if(user == null)
             throw new UsernameNotFoundException("Error 404");
         return new UserPrincipal(user);

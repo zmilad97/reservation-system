@@ -16,7 +16,7 @@ public class User {
     @GeneratedValue
     private long id;
     @Column(nullable = false, unique = true)
-    private long phonenumber;
+    private String phonenumber;
     @Column(nullable = false)
     private String password;
     @Column(unique = true)
@@ -38,11 +38,11 @@ public class User {
         this.id = id;
     }
 
-    public long getPhonenumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(long phonenumber) {
+    public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
 

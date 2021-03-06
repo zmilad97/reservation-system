@@ -1,5 +1,6 @@
 package com.github.zmilad97.reservationsystem.security;
 
+import com.github.zmilad97.reservationsystem.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -9,17 +10,21 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private MyUserDetailsService myUserDetailsService;
+    private UserRepository userRepository;
 
-    public SecurityConfiguration(MyUserDetailsService myUserDetailsService) {
+    public SecurityConfiguration(MyUserDetailsService myUserDetailsService, UserRepository userRepository) {
         this.myUserDetailsService = myUserDetailsService;
+        this.userRepository = userRepository;
     }
 
     @Bean
@@ -50,22 +55,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(),  this.userRepository))
                 .authorizeRequests()
                 .antMatchers("/api/user/current").permitAll()
-                .antMatchers("/api/work/**").hasAnyRole("ROLE_ADMIN", "ROLE_OWNER")
-                .antMatchers("/api/schedule/**").hasAnyRole("ROLE_ADMIN", "ROLE_OWNER")
-                .antMatchers("/api/reserve/work/**").hasAnyRole("ROLE_ADMIN", "ROLE_OWNER")
-                .antMatchers("/login").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .logout().invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login")
-                .and()
-                .rememberMe().tokenValiditySeconds((2592000))
-                .and()
-                .httpBasic();
+                .antMatchers("/api/work/**").hasAnyRole("ADMIN", "OWNER")
+                .antMatchers("/api/schedule/**").hasAnyRole("ADMIN", "OWNER")
+                .antMatchers("/api/reserve/work/*").hasAnyRole("ADMIN")
+                .antMatchers("/test").authenticated()
+                .antMatchers("/test2").permitAll()
+                .antMatchers("/login").permitAll();
+//                .anyRequest().authenticated();
     }
 
 }

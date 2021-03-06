@@ -9,6 +9,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component
 public class SystemStarter implements ApplicationRunner {
     private final UserRepository userRepository;
@@ -22,7 +24,7 @@ public class SystemStarter implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        if (userRepository.findByPhonenumber(Long.parseLong("09389717356")) == null){
+        if (userRepository.findByPhonenumber("09389717356") == null){
             userRepository.save(adminUser());
             LOG.info("admin user created");
         }
@@ -33,9 +35,10 @@ public class SystemStarter implements ApplicationRunner {
     public User adminUser() {
         User user = new User();
         user.setId(1);
-        user.setPhonenumber(Long.parseLong("09389717356"));
+        user.setPhonenumber("09389717356");
         user.setPassword(passwordEncoder.encode("admin"));
         user.setEmail("admin@gmail.com");
+        user.addPermission("admin");
         user.setGender(User.Gender.MALE);
         user.setRoles("ADMIN");
         user.setActive(true);
