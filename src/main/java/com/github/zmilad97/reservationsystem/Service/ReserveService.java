@@ -31,6 +31,8 @@ public class ReserveService {
         if (!(SecurityUtil.getCurrentUser().getRoleList().contains("ROLE_ADMIN")
                 || reserve.getWork().getOwner().equals(SecurityUtil.getCurrentUser())))
             reserve.setApproved(false);
+        if(reserve.getUser() == null)
+            reserve.setUser(SecurityUtil.getCurrentUser());
         reserveRepository.save(reserve);
     }
 

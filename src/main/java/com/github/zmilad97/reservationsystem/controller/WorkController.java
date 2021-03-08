@@ -7,6 +7,8 @@ import com.github.zmilad97.reservationsystem.repository.WorkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/work/")
 public class WorkController {
@@ -51,8 +53,9 @@ public class WorkController {
     }
 
     @GetMapping("search/{title}")
-    public Work search(@PathVariable String title) {
-        return workRepository.findByTitleContains(title);
+    public List<Work> search(@PathVariable String title) {
+        return workRepository.findByTitleContaining(title);
     }
+
 
 }

@@ -7,7 +7,9 @@ import com.github.zmilad97.reservationsystem.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 @Service
 public class WorkService {
@@ -20,7 +22,7 @@ public class WorkService {
     }
 
     public void save(Work work) {
-        if (SecurityUtil.getCurrentUser().getRoleList().contains("ROLE_OWNER")) {
+        if (SecurityUtil.getCurrentUser().getRoleList().contains("OWNER")||SecurityUtil.getCurrentUser().getRoleList().contains("ADMIN")) {
 
             if (work.getOwner() == null)
                 work.setOwner(SecurityUtil.getCurrentUser());
@@ -91,5 +93,11 @@ public class WorkService {
         }
     }
 
+    public Map<Long,String> findByTitleContains(String title){
+        HashMap<Long,String> workmap = new HashMap();
 
+        workRepository.findByTitleContaining(title).forEach((e) -> workmap.put(e.getId() ,e.getTitle()));
+
+        return workmap;
+    }
 }
