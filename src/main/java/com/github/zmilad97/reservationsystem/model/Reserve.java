@@ -1,5 +1,7 @@
 package com.github.zmilad97.reservationsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,11 +30,13 @@ public class Reserve {
      * reserved date  (mm-dd-yyyy)
      * it should save like : 03-14-2021
      */
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
     private LocalDate date;
     /**
      * reserved time
      * it should save like : 12:50
      */
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime time;
 
     /**
