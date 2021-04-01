@@ -28,6 +28,7 @@ public class ReserveService {
 
     public void save(Reserve reserve) {
 //        resolveConflictDateAndTime(reserve.getDate(), reserve.getTime(), reserve.getWork());
+        reserve.setWork(workRepository.findWorkById(reserve.getWork().getId()));
         if (!(SecurityUtil.getCurrentUser().getRoleList().contains("ROLE_ADMIN")
                 || reserve.getWork().getOwner().equals(SecurityUtil.getCurrentUser())))
             reserve.setApproved(false);
