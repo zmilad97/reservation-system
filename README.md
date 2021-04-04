@@ -1,5 +1,7 @@
 ## Reservation System API
 this is a java reservation api built using Spring FrameWork and MySql DataBase
+It is an reservation system that anyone (like lawyers or doctors or   bearers ...) can add their works and their time schedule  on it and customer can easily pick their suitable time and submit it
+
 ## Running Reservation-System  localy
 reservation-system is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built using [Maven](https://spring.io/guides/gs/maven/). You can build a jar file and run it from the command line:
 
