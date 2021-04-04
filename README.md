@@ -11,7 +11,7 @@ cd reservation-system
 java -jar target/*.jar
 ```
 
-You can then access online-exam here: http://localhost:6060/
+You can then access reservation-system here: http://localhost:6060/
 
 
 
